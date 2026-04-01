@@ -1,0 +1,18 @@
+package com.mphasis.firstspringapp.service;
+
+public class GreetService {
+    private String msg;
+    
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	
+	public void greet() {
+		System.out.println(msg);
+	}
+    
+} 

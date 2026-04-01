@@ -1,0 +1,22 @@
+package com.mphasis.firstspringapp;
+
+import java.awt.Container;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.mphasis.firstspringapp.service.GreetService;
+import com.mphasis.firstspringapp.service.OrderService;
+import com.mphasis.firstspringapp.service.SMSService;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("spring-c  onfig.xml");
+
+       
+       SMSService smsService 
+
+        context.close();
+    }
+}

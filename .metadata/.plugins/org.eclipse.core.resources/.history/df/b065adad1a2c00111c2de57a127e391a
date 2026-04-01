@@ -1,0 +1,29 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.mphasis.firstspringapp.service.Student;
+import com.mphasis.firstspringapp.service.OrderService;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        // Load Spring container
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+
+        // Exercise 1: Student
+        Student student = context.getBean("student", Student.class);
+        System.out.println("Student: " + student.getName());
+
+        System.out.println("--------------------------------");
+
+        // Exercise 4 / 5 flow: OrderService → EmailService → MailServer
+        OrderService orderService =
+                context.getBean("orderService", OrderService.class);
+        orderService.placeOrder();
+
+        // Close container (important)
+        context.close();
+    }
+}

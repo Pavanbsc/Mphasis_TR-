@@ -1,0 +1,27 @@
+package com.mphasis.secondspringapp;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.mphasis.secondspringapp.service.Product;
+import com.mphasis.secondspringapp.service.OrderExercise2;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        AnnotationConfigApplicationContext container =
+                new AnnotationConfigApplicationContext(SpringConfig.class);
+
+        // ✅ Exercise‑1
+        Product product = container.getBean(Product.class);
+        System.out.println("Product ID: " + product.getProductId());
+        System.out.println("Name: " + product.getName());
+        System.out.println("Price: " + product.getPrice());
+
+        // ✅ Exercise‑2 (NEW CLASS)
+        OrderExercise2 order = container.getBean(OrderExercise2.class);
+        order.placeOrder(6000);
+
+        container.close();
+    }
+}

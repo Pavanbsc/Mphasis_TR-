@@ -1,0 +1,41 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.mphasis.firstspringapp.service.EmailService;
+import com.mphasis.firstspringapp.service.GreetService;
+import com.mphasis.firstspringapp.service.MailServerConfig;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+
+        // GreetService
+        GreetService greetService =
+                context.getBean("greetService", GreetService.class);
+        greetService.greet();
+
+        System.out.println("++++++++++++++++++++++++++++");
+
+        // MailServerConfig
+        MailServerConfig mailServer =
+                context.getBean("mailServer", MailServerConfig.class);
+
+        System.out.println("Mail Server IP: " + mailServer.getIp());
+        System.out.println("Login: " + mailServer.getLogin());
+
+        System.out.println("++++++++++++++++++++++++++++");
+
+        // EmailService (Bean-to-bean DI)
+        EmailService emailService =
+                context.getBean("emailService", EmailService.class);
+
+        System.out.println("Email Config IP: "
+                + emailService.getConfig().getIp());
+
+        context.close();
+    }
+}

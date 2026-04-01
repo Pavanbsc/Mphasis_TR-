@@ -1,0 +1,24 @@
+package com.mphasis.firstspringapp.service;
+
+public class GreetService {
+    private String msg;
+    
+    public void init() {
+		System.out.println("greetService Initalized");
+	}
+	
+	public GreetService(String msg) {
+		super();
+		this.msg = msg;
+	}
+
+
+	public void greet() {
+		System.out.println(msg);
+	}
+	
+	public void destroy() {
+		System.out.println("greetService Destroyed");
+	}
+    
+} 

@@ -1,0 +1,33 @@
+package com.mphasis.secondspringapp.service;
+
+import org.springframework.stereotype.Component;
+
+//@Component("mailServerConfig")
+public class MailServerConfig {
+	private String ip = "192.168.12.2";
+    private String login="Jogi";
+    private String token="token@123";
+	public MailServerConfig() {
+		super();
+	}
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+    
+    
+}

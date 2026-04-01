@@ -1,0 +1,20 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.mphasis.firstspringapp.service.OrderService;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext context =
+            new ClassPathXmlApplicationContext("spring-config.xml");
+
+        OrderService orderService =
+            context.getBean("orderService", OrderService.class);
+
+        orderService.placeOrder();
+
+        context.close();
+    }
+}

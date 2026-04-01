@@ -1,0 +1,21 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.mphasis.firstspringapp.service.*;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+
+        EmailService emailService =
+                context.getBean("emailService", EmailService.class);
+
+        System.out.println("Email IP: " +
+                emailService.getConfig().getIp());
+
+        context.close();
+    }
+}

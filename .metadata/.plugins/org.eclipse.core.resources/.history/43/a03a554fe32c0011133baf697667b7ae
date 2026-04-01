@@ -1,0 +1,18 @@
+@Component
+public class UserServiceExercise3 {
+
+    private final NotificationService notificationService;
+
+    public UserServiceExercise3(
+        @Qualifier("emailNotificationService")
+        NotificationService notificationService) {
+
+        this.notificationService = notificationService;
+    }
+
+    public void notifyUser() {
+        notificationService.sendNotification(
+            "Welcome to our application",
+            "user@example.com");
+    }
+}

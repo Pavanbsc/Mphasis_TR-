@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
+
+   <context:component-scan base-package="com.mphasis.firstspringapp.service"></context:component-scan>
+    <!-- Greet Service -->
+    <bean id="greetService"
+          class="com.mphasis.firstspringapp.service.GreetService"
+          init-method="init"
+          destroy-method="destroy">
+        <property name="msg" value="Welcome to Spring Framework!!"/>
+    </bean>
+
+    <!-- Mail Server -->
+    <bean id="mailServer"
+          class="com.mphasis.firstspringapp.service.MailServerConfig">
+        <constructor-arg value="192.168.1.1"/>
+        <constructor-arg value="admin"/>
+        <constructor-arg value="token123"/>
+    </bean>
+
+    <!-- Email Service -->
+    <bean id="emailService"
+          class="com.mphasis.firstspringapp.service.EmailService">
+        <constructor-arg ref="mailServer"/>
+    </bean>
+
+    <!-- Order Service -->
+    <bean id="orderService"
+          class="com.mphasis.firstspringapp.service.OrderService">
+        <property name="emailService" ref="emailService"/>
+    </bean>
+
+</beans>

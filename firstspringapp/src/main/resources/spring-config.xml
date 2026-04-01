@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   
+    <bean id="student" class="com.mphasis.firstspringapp.service.Student">
+        <property name="studentId" value="IND001"/>
+        <property name="name" value="PAVAN"/>
+        <property name="grade" value="A"/>
+    </bean>
+
+
+    <bean id="engine" class="com.mphasis.firstspringapp.service.Engine">
+        <constructor-arg value="BS6 Petrol"/>
+        <constructor-arg value="180"/>
+    </bean>
+
+    <bean id="car" class="com.mphasis.firstspringapp.service.Car">
+        <constructor-arg value="Sedan"/>
+        <constructor-arg ref="engine"/>
+        <constructor-arg value="2024"/>
+    </bean>
+
+   
+    <bean id="book1" class="com.mphasis.firstspringapp.service.Book">
+        <property name="title" value="Java for Beginners"/>
+        <property name="author" value="PAVAN"/>
+    </bean>
+
+    <bean id="book2" class="com.mphasis.firstspringapp.service.Book">
+        <property name="title" value="Spring Framework"/>
+        <property name="author" value="VALLAB"/>
+    </bean>
+
+    <bean id="book3" class="com.mphasis.firstspringapp.service.Book">
+        <property name="title" value="Hibernate Made Easy"/>
+        <property name="author" value="MITHUN"/>
+    </bean>
+
+    <bean id="library" class="com.mphasis.firstspringapp.service.Library">
+        <constructor-arg>
+            <list>
+                <ref bean="book1"/>
+                <ref bean="book2"/>
+                <ref bean="book3"/>
+            </list>
+        </constructor-arg>
+        <property name="libraryName" value="Government Central Library"/>
+    </bean>
+
+  
+    <bean id="financeDepartment"
+          class="com.mphasis.firstspringapp.service.Department"
+          scope="prototype">
+        <property name="name" value="Finance"/>
+        <property name="code" value="FIN-IND"/>
+    </bean>
+
+    <bean id="employee1" class="com.mphasis.firstspringapp.service.Employee">
+        <property name="name" value="VALLAB"/>
+        <property name="position" value="Finance Manager"/>
+        <property name="department" ref="financeDepartment"/>
+    </bean>
+
+    <bean id="employee2"
+          class="com.mphasis.firstspringapp.service.Employee"
+          autowire="byType">
+        <property name="name" value="MITHUN"/>
+        <property name="position" value="Accounts Analyst"/>
+    </bean>
+
+   
+    <bean id="customer" class="com.mphasis.firstspringapp.service.Customer">
+        <property name="name" value="COBRA"/>
+        <property name="membershipType" value="Gold"/>
+    </bean>
+
+    <bean id="product1" class="com.mphasis.firstspringapp.service.Product">
+        <property name="name" value="Pressure Cooker"/>
+        <property name="price" value="2500"/>
+    </bean>
+
+    <bean id="product2" class="com.mphasis.firstspringapp.service.Product">
+        <property name="name" value="Mixer Grinder"/>
+        <property name="price" value="4500"/>
+    </bean>
+
+    <bean id="shoppingCart" class="com.mphasis.firstspringapp.service.ShoppingCart">
+        <constructor-arg ref="customer"/>
+        <property name="products">
+            <list>
+                <ref bean="product1"/>
+                <ref bean="product2"/>
+
+                <!-- Inner Bean -->
+                <bean class="com.mphasis.firstspringapp.service.Product">
+                    <property name="name" value="Steel Water Bottle"/>
+                    <property name="price" value="800"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+</beans>

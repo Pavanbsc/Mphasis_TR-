@@ -1,0 +1,21 @@
+package com.mphasis.secondspringapp.service;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class OrderExercise2 {
+
+    private final PaymentService paymentService;
+    private final String orderId = "ORD-EX2-101";
+
+    // ✅ Constructor Injection
+    public OrderExercise2(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
+    public void placeOrder(double amount) {
+        System.out.println("Order ID: " + orderId);
+        System.out.println(paymentService.processPayment(amount));
+    }
+}
+``

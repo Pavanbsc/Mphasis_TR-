@@ -1,0 +1,22 @@
+package com.mphasis.secondspringapp.service;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserServiceExercise3 {
+
+    private final NotificationService notificationService;
+
+    public UserServiceExercise3(
+        @Qualifier("emailNotificationService")
+        NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
+
+    public void notifyUser() {
+        notificationService.sendNotification(
+            "Welcome to our application",
+            "user@example.com");
+    }
+}

@@ -1,0 +1,12 @@
+package com.mphasis.secondspringapp.service;
+
+import org.springframework.stereotype.Component;
+
+@Component("smsService")
+public class SmsNotificationService implements NotificationService {
+
+    @Override
+    public void sendNotification(String message, String recipient) {
+        System.out.println("SMS sent to " + recipient + ": " + message);
+    }
+}

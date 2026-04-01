@@ -1,0 +1,20 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.mphasis.firstspringapp.service.SMSService;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext container =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+
+        SMSService smsService =
+                container.getBean("smsService", SMSService.class);
+
+        smsService.sendSMS();   // ✅ correct method call
+
+        container.close();
+    }
+}

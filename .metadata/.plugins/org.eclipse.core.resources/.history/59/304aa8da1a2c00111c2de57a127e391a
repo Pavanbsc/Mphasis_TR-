@@ -1,0 +1,24 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.mphasis.firstspringapp.service.Student;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext context =
+            new ClassPathXmlApplicationContext("spring-config.xml");
+
+        Student student = context.getBean("student", Student.class);
+
+        System.out.println(
+            "Student: " +
+            student.getStudentId() + " | " +
+            student.getName() + " | " +
+            student.getGrade()
+        );
+
+        context.close();
+    }
+}

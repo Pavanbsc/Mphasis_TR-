@@ -1,0 +1,49 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.mphasis.firstspringapp.service.Student;
+import com.mphasis.firstspringapp.service.Car;
+import com.mphasis.firstspringapp.service.Library;
+import com.mphasis.firstspringapp.service.Employee;
+import com.mphasis.firstspringapp.service.ShoppingCart;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        // Load Spring container
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+
+        System.out.println("===== EXERCISE 1: STUDENT =====");
+        Student student = context.getBean("student", Student.class);
+        System.out.println(
+                student.getStudentId() + " | " +
+                student.getName() + " | " +
+                student.getGrade()
+        );
+
+        System.out.println("\n===== EXERCISE 2: CAR =====");
+        Car car = context.getBean("car", Car.class);
+        car.display();
+
+        System.out.println("\n===== EXERCISE 3: LIBRARY =====");
+        Library library = context.getBean("library", Library.class);
+        library.display();
+
+        System.out.println("\n===== EXERCISE 4: EMPLOYEES =====");
+        Employee emp1 = context.getBean("employee1", Employee.class);
+        emp1.display();
+
+        Employee emp2 = context.getBean("employee2", Employee.class);
+        emp2.display();
+
+        System.out.println("\n===== EXERCISE 5: SHOPPING CART =====");
+        ShoppingCart cart = context.getBean("shoppingCart", ShoppingCart.class);
+        cart.display();
+
+        // Close container
+        context.close();
+    }
+}

@@ -1,0 +1,29 @@
+package com.mphasis.firstspringapp;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.mphasis.firstspringapp.service.GreetService;
+import com.mphasis.firstspringapp.service.OrderService;
+
+public class MainServerApp {
+
+    public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+
+        // 1. GreetService messages
+        GreetService greetService =
+                context.getBean("greetService", GreetService.class);
+        greetService.greet();
+
+        System.out.println("================================");
+
+        // 2. Order & Email messages
+        OrderService orderService =
+                context.getBean("orderService", OrderService.class);
+        orderService.placeOrder();
+
+        // 3. Destroy lifecycle messages
+        context.close();
+    }
+}

@@ -1,0 +1,27 @@
+package com.mphasis.secondspringapp;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.mphasis.secondspringapp.service.Product;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        AnnotationConfigApplicationContext container =
+                new AnnotationConfigApplicationContext(SpringConfig.class);
+
+        // ✅ Existing code
+        GreetService greetService =
+                container.getBean("greetService", GreetService.class);
+        greetService.greet();
+
+        // ✅ Exercise‑1 code (ADD THIS)
+        Product product = container.getBean(Product.class);
+
+        System.out.println("Product ID: " + product.getProductId());
+        System.out.println("Name: " + product.getName());
+        System.out.println("Price: " + product.getPrice());
+
+        container.close();
+    }
+}

@@ -1,0 +1,27 @@
+package com.mphasis.firstspringapp.service;
+
+public class GreetService {
+
+    private String msg;
+
+    // ✅ REQUIRED BY SPRING
+    public GreetService() {
+        System.out.println("GreetService default constructor called");
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public void init() {
+        System.out.println("greetService Initialized");
+    }
+
+    public void greet() {
+        System.out.println(msg);
+    }
+
+    public void destroy() {
+        System.out.println("greetService Destroyed");
+    }
+}

@@ -1,0 +1,20 @@
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.mphasis.secondspringapp.service.UserRepository;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        // ✅ REQUIRED for Exercise‑4
+        System.setProperty("spring.profiles.active", "dev");
+
+        AnnotationConfigApplicationContext container =
+                new AnnotationConfigApplicationContext(SpringConfig.class);
+
+        UserRepository repo = container.getBean(UserRepository.class);
+        repo.printDbInfo();
+
+        container.close();
+    }
+}
